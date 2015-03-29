@@ -18,6 +18,7 @@ import model.LastEscapeDrunkWalk;
 import model.Maze;
 import model.OriginalGenneratorWithStepping;
 import model.RandomEscapeDrunkWalk;
+import solver.AstarSearch;
 import solver.Solver;
 import solver.StupidSearch;
 import view.GridPanel;
@@ -29,9 +30,9 @@ public class PGMaze {
 		new StupidSearch(),
 		new StupidSearch(),
 		new StupidSearch(),
-		new StupidSearch()
+		new AstarSearch()
 	};
-	
+
 	private static final int TUNNELS = 200;
 	
 	private final Random rng = new Random();
