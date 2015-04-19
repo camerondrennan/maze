@@ -20,7 +20,6 @@ import model.OriginalGenneratorWithStepping;
 import model.RandomEscapeDrunkWalk;
 import solver.BreadthFirstSearch;
 import solver.CameronDrennanSearch;
-import solver.GregorCannonSearch;
 import solver.Solver;
 import view.GridPanel;
 import data.PointPair;
@@ -28,24 +27,14 @@ import data.PointPair;
 public class PGMaze {
 	
 	private final Solver[] solvers = new Solver[] {
-		
+//		new CameronDrennanSearch(),
+//		new CameronDrennanSearch(),
+		new CameronDrennanSearch(),
+//		new CameronDrennanSearch()
 //			new BreadthFirstSearch(),
-			
-		new CameronDrennanSearch(),
-		
-//		new BreadthFirstSearch(),
-		
-		
-		new CameronDrennanSearch(),
-		new CameronDrennanSearch(),
-		
-		
-//		new BreadthFirstSearch(),
-		
-		new CameronDrennanSearch()
-		
-		
-		
+//			new BreadthFirstSearch(),
+//			new BreadthFirstSearch(),
+			new BreadthFirstSearch()
 	};
 
 	private static final int TUNNELS = 500;
@@ -182,7 +171,7 @@ public class PGMaze {
 
 	public static void main(String[] args) {
 		
-		new PGMaze(args);c
+		new PGMaze(args);
 
 	}
 

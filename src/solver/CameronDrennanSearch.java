@@ -15,9 +15,9 @@ public class CameronDrennanSearch extends AbstractSolver {
 	@Override
 	public List<Point> solve(int[][] maze, Point start, Point goal) {
 		this.goal = goal;
-		ArrayDeque<LinkedList<Point>> queue = new ArrayDeque<LinkedList<Point>>(50);
+		ArrayDeque<LinkedList<Point>> queue = new ArrayDeque<LinkedList<Point>>();
 		LinkedList<Point> currentPath = new LinkedList<Point>(); 
-		HashSet<Point> visitedNodes = new HashSet<Point>(5000);
+		HashSet<Point> visitedNodes = new HashSet<Point>();
 		
 		currentPath.add(start);
 		if(start.equals(goal)){
@@ -29,27 +29,25 @@ public class CameronDrennanSearch extends AbstractSolver {
 		while(!queue.isEmpty()){
 			
 			currentPath = queue.poll();
-			Point current = currentPath.get((currentPath.size()-1));
-			if((current.equals(goal))){
+			Point currentPoint = currentPath.get((currentPath.size()-1));
+			if((currentPoint.equals(goal))){
 				return currentPath;
 			}
 			else {
 				//node checking
-				if(!visitedNodes.contains(current)){
-					visitedNodes.add(current);
+				if(!visitedNodes.contains(currentPoint)) {
+					visitedNodes.add(currentPoint);
 					//extending path
-					
-					PriorityQueue<Point> neighbours = new PriorityQueue<Point>(16, linkedListComparator);
-					for(Point neighbour : getNeighbours(current, maze)) {
+					PriorityQueue<Point> neighbours = new PriorityQueue<Point>(linkedListComparator);
+					for(Point neighbour : getNeighbours(currentPoint, maze)) {
+						//path checking
 						if(!currentPath.contains(neighbour)) {
 							neighbours.add(neighbour);
+							LinkedList<Point> nextPath = new LinkedList<Point>();
+							nextPath.addAll(currentPath);
+							nextPath.add(neighbour);
+							queue.add(nextPath);
 						}
-					}
-					for(Point neighbour1 : neighbours) {
-						LinkedList<Point> nextPath = new LinkedList<Point>();
-						nextPath.addAll(currentPath);
-						nextPath.add(neighbour1);
-						queue.add(nextPath);
 					}
 				}
 			}
