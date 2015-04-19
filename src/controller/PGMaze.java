@@ -18,22 +18,37 @@ import model.LastEscapeDrunkWalk;
 import model.Maze;
 import model.OriginalGenneratorWithStepping;
 import model.RandomEscapeDrunkWalk;
-import solver.AstarSearch;
+import solver.BreadthFirstSearch;
+import solver.CameronDrennanSearch;
+import solver.GregorCannonSearch;
 import solver.Solver;
-import solver.StupidSearch;
 import view.GridPanel;
 import data.PointPair;
 
 public class PGMaze {
 	
 	private final Solver[] solvers = new Solver[] {
-		new StupidSearch(),
-		new StupidSearch(),
-		new StupidSearch(),
-		new AstarSearch()
+		
+//			new BreadthFirstSearch(),
+			
+		new CameronDrennanSearch(),
+		
+//		new BreadthFirstSearch(),
+		
+		
+		new CameronDrennanSearch(),
+		new CameronDrennanSearch(),
+		
+		
+//		new BreadthFirstSearch(),
+		
+		new CameronDrennanSearch()
+		
+		
+		
 	};
 
-	private static final int TUNNELS = 200;
+	private static final int TUNNELS = 500;
 	
 	private final Random rng = new Random();
 	private int width;
@@ -51,8 +66,8 @@ public class PGMaze {
 	public PGMaze(String[] args) {
 		
 		// DEFAULTS
-		width = 40;
-		height = 40;
+		width = 100;
+		height = 100;
 		gen = 4;
 		anim = 0; // set to -1 for no animation
 		
@@ -167,7 +182,7 @@ public class PGMaze {
 
 	public static void main(String[] args) {
 		
-		new PGMaze(args);
+		new PGMaze(args);c
 
 	}
 
